@@ -129,6 +129,10 @@ AM_PROG_VALAC([0.14])
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
+# Compiler warnings from gnome-common.
+GNOME_COMPILE_WARNINGS([maximum])
+CFLAGS="$CFLAGS $WARN_CFLAGS"
+
 # i18n stuff
 AM_GLIB_GNU_GETTEXT
 
