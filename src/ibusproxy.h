@@ -95,6 +95,7 @@ GType   ibus_proxy_get_type (void);
 
 /**
  * ibus_proxy_destroy:
+ * @proxy: An #IBusProxy.
  *
  * Dispose the proxy object. If the dbus connection is alive and the own variable above
  * is TRUE (which is the default), org.freedesktop.IBus.Service.Destroy method will be

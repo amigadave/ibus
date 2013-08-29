@@ -141,6 +141,7 @@ IBusAttribute       *ibus_attribute_new         (guint           type,
 
 /**
  * ibus_attribute_get_attr_type:
+ * @attr: An attribute
  * @returns: An enum of #IBusAttrType.
  *
  * Returns an enum of #IBusAttrType.
@@ -150,6 +151,7 @@ guint                ibus_attribute_get_attr_type
 
 /**
  * ibus_attribute_get_value:
+ * @attr: An attribute
  * @returns: An unsigned int value relative with #IBusAttrType.
  *
  * Returns an unsigned int value relative with #IBusAttrType.
@@ -161,6 +163,7 @@ guint                ibus_attribute_get_value   (IBusAttribute *attr);
 
 /**
  * ibus_attribute_get_start_index:
+ * @attr: An attribute
  * @returns: A start unsigned index
  *
  * Returns a start unsigned index
@@ -170,6 +173,7 @@ guint                ibus_attribute_get_start_index
 
 /**
  * ibus_attribute_get_end_index:
+ * @attr: An attribute
  * @returns: A end unsigned index
  *
  * Returns a end unsigned index

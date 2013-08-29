@@ -37,7 +37,7 @@
 /**
  * ibus_warning:
  * @msg: A printf formatted message to be print.
- * @args...: Necessary arguments for @msg.
+ * @...: Necessary arguments for @msg.
  *
  * A convenient wrapper for g_warning.
  * The output format will be
@@ -45,8 +45,8 @@
  *     source_file:line, message...
  * </programlisting>
  */
-#define ibus_warning(msg, args...) \
-    g_warning("%s:%d, " msg, __FILE__, __LINE__, ##args)
+#define ibus_warning(msg, ...) \
+    g_warning("%s:%d, " msg, __FILE__, __LINE__, __VA_ARGS__)
 
 #endif
 

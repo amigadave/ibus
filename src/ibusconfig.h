@@ -88,6 +88,8 @@ GType            ibus_config_get_type       (void);
 /**
  * ibus_config_new:
  * @connection: A #GDBusConnection.
+ * @cancellable: A #GCancellable or %NULL.
+ * @error: Return location for error or %NULL.
  * @returns: An newly allocated #IBusConfig corresponding to @connection.
  *
  * New an #IBusConfig from existing #GDBusConnection.
@@ -116,7 +118,6 @@ void             ibus_config_new_async      (GDBusConnection    *connection,
  * @res: A #GAsyncResult obtained from the #GAsyncReadyCallback pass to
  *      ibus_config_new_async().
  * @error: Return location for error or %NULL.
- *
  * @returns: A newly allocated #IBusConfig.
  *
  * Finishes an operation started with ibus_config_new_async().

@@ -118,6 +118,7 @@ GType            ibus_service_get_type          (void);
 
 /**
  * ibus_service_new:
+ * @connection: A #GDBusConnection.
  * @path: Object path.
  * @returns: A newly allocated IBusService
  *
@@ -175,10 +176,9 @@ void             ibus_service_unregister        (IBusService        *service,
  * @first_arg_type: Type of first argument.
  * @...: Rest of arguments, NULL to mark the end.
  * @returns: TRUE if succeed; FALSE otherwise.
+ * @see_also: g_dbus_connection_emit_signal()
  *
  * Send signal to all the IBusConnections of an IBusService.
- *
- * @see_also: g_dbus_connection_emit_signal()
  */
 gboolean         ibus_service_emit_signal       (IBusService        *service,
                                                  const gchar        *dest_bus_name,
@@ -190,6 +190,7 @@ gboolean         ibus_service_emit_signal       (IBusService        *service,
  * ibus_service_class_add_interfaces:
  * @klass: An IBusServiceClass.
  * @xml_data: The introspection xml data.
+ * @returns: TRUE if succeed; FALSE otherwise.
  *
  * Set the interface introspection information with the service class.
  */

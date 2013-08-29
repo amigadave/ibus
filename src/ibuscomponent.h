@@ -133,7 +133,7 @@ IBusComponent   *ibus_component_new             (const gchar    *name,
 /**
  * ibus_component_new_varargs:
  * @first_property_name: Name of the first property.
- * @Varargs: the NULL-terminated arguments of the properties and values.
+ * @...: the NULL-terminated arguments of the properties and values.
  *
  * New an IBusComponent.
  * ibus_component_new_varargs() supports the va_list format.

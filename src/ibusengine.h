@@ -73,8 +73,6 @@ typedef struct _IBusEnginePrivate IBusEnginePrivate;
  * @has_focus: Whether the engine has focus.
  * @cursor_area: Area of cursor.
  * @client_capabilities: IBusCapabilite (client capabilities) flags.
- * @client_purpose: IBusInputPurpose (client input purpose).
- * @client_hints: IBusInputHints (client input hints) flags.
  *
  * IBusEngine properties.
  */

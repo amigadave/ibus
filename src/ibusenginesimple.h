@@ -25,7 +25,7 @@
 #endif
 
 /**
- * SECTION: ibussimpleengine
+ * SECTION: ibusenginesimple
  * @short_description: Input method engine supporting table-based input method
  * @title: IBusEngineSimple
  * @stability: Stable
@@ -101,6 +101,7 @@ GType   ibus_engine_simple_get_type       (void);
  *      during the whole life of the simple engine.
  * @max_seq_len: Maximum length of a swquence in the table (cannot be greater
  *      than %IBUS_MAX_COMPOSE_LEN)
+ * @n_seqs: The number of sequences.
  *
  * Adds an additional table to search to the engine. Each row of the table
  * consists of max_seq_len key symbols followed by two guint16 interpreted as

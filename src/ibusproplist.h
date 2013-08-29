@@ -29,8 +29,7 @@
  * @Title: IBusPropList
  * @Short_description: An #IBusProperty container.
  * @Stability: Stable
- *
- * @See_also: #IBusProperty, #IBusEngine
+ * @see_also: #IBusProperty, #IBusEngine
  *
  */
 #ifndef __IBUS_PROP_LIST_H_

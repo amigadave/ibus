@@ -29,6 +29,7 @@
  * @short_description:  Input method engine description data.
  * @title: IBusEngineDesc
  * @stability: Stable
+ * @see_also: #IBusComponent, #IBusEngine
  *
  * An IBusEngineDesc stores description data of IBusEngine.
  * The description data can either be passed to ibus_engine_desc_new(),
@@ -38,9 +39,6 @@
  * However, the recommended way to load engine description data is
  * using ibus_component_new_from_file() to load a component file,
  * which also includes engine description data.
- *
- * @see_also: #IBusComponent, #IBusEngine
- *
  */
 
 #ifndef __ENGINE_DESC_H_
@@ -138,7 +136,8 @@ IBusEngineDesc  *ibus_engine_desc_new           (const gchar    *name,
 /**
  * ibus_engine_desc_new_varargs:
  * @first_property_name: Name of the first property.
- * @Varargs: the NULL-terminated arguments of the properties and values.
+ * @...: the %NULL-terminated arguments of the properties and values.
+ * @returns: A newly allocated IBusEngineDesc.
  *
  * New a IBusEngineDesc.
  * ibus_engine_desc_new_varargs() supports the va_list format.

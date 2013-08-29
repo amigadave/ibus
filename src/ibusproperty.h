@@ -35,6 +35,7 @@
  * @short_description: UI component for input method engine property.
  * @title: IBusProperty
  * @stability: Stable
+ * @see_also: #IBusPropList, #IBusEngine
  *
  * An IBusProperty is an UI component like a button or a menu item
  * which shows the status of corresponding input method engine property.
@@ -42,8 +43,6 @@
  * For example, ibus-chewing users change the English/Chinese input mode by
  * pressing ctrl-space or click on the Eng/Chi switch button.
  * And the IBusProperty shows the change correspondingly.
- *
- * see_also: #IBusPropList, #IBusEngine
  */
 G_BEGIN_DECLS
 
@@ -180,7 +179,8 @@ IBusProperty    *ibus_property_new          (const gchar    *key,
 /**
  * ibus_property_new_varargs:
  * @first_property_name: Name of the first property.
- * @Varargs: the NULL-terminated arguments of the properties and values.
+ * @...: the %NULL-terminated arguments of the properties and values.
+ * @returns: A newly allocated #IBusProperty.
  *
  * New a #IBusProperty.
  * ibus_property_new_varargs() supports the va_list format.
