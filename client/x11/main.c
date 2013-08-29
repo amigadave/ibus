@@ -104,6 +104,7 @@ static void     _context_enabled_cb         (IBusInputContext   *context,
                                              X11IC              *x11ic);
 static void     _context_disabled_cb        (IBusInputContext   *context,
                                              X11IC              *x11ic);
+int ims_protocol_handler (XIMS xims, IMProtocol *call_data);
 
 static GHashTable     *_x11_ic_table = NULL;
 static GHashTable     *_connections = NULL;

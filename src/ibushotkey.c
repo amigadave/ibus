@@ -56,6 +56,7 @@ struct _IBusHotkeyProfilePrivate {
 
 
 /* functions prototype */
+GType                ibus_hotkey_get_type           (void);
 static IBusHotkey   *ibus_hotkey_new                (guint                   keyval,
                                                      guint                   modifiers);
 static IBusHotkey   *ibus_hotkey_copy               (const IBusHotkey       *src);

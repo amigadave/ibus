@@ -34,6 +34,8 @@
 
 static gchar *_display = NULL;
 
+const gchar * ibus_get_session_id (void);
+
 const gchar *
 ibus_get_local_machine_id (void)
 {

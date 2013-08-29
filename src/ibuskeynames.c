@@ -34,6 +34,13 @@
 
 #define IBUS_NUM_KEYS G_N_ELEMENTS (gdk_keys_by_keyval)
 
+const gchar* ibus_keyval_name (guint keyval);
+guint ibus_keyval_from_name (const gchar *keyval_name);
+const gchar * ibus_key_event_to_string (guint keyval, guint modifiers);
+gboolean ibus_key_event_from_string (const gchar *string,
+                                     guint       *keyval,
+                                     guint       *modifiers);
+
 static int
 gdk_keys_keyval_compare (const void *pkey, const void *pbase)
 {

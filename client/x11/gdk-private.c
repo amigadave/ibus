@@ -32,6 +32,10 @@
 #  include <X11/XKBlib.h>
 #endif
 
+void translate_key_event (GdkDisplay *display,
+		          GdkEvent   *event,
+		          XEvent     *xevent);
+
 void
 translate_key_event (GdkDisplay *display,
 		     GdkEvent   *event,

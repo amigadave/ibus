@@ -53,6 +53,20 @@ static void	DebugLog(char * msg)
 
 extern Xi18nClient *_Xi18nFindClient (Xi18n, CARD16);
 
+void PreeditStartReplyMessageProc (XIMS ims,
+                                   IMProtocol *call_data,
+                                   unsigned char *p);
+void StrConvReplyMessageProc (XIMS ims,
+                              IMProtocol *call_data,
+                              unsigned char *p);
+void PreeditCaretReplyMessageProc (XIMS ims,
+                                   IMProtocol *call_data,
+                                   unsigned char *p);
+void _Xi18nMessageHandler (XIMS ims,
+                           CARD16 connect_id,
+                           unsigned char *p,
+                           Bool *delete);
+
 static void GetProtocolVersion (CARD16 client_major,
                                 CARD16 client_minor,
                                 CARD16 *server_major,

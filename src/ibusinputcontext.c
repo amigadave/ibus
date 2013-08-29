@@ -80,6 +80,10 @@ static void     ibus_input_context_g_signal     (GDBusProxy             *proxy,
                                                  const gchar            *sender_name,
                                                  const gchar            *signal_name,
                                                  GVariant               *parameters);
+void ibus_input_context_property_show (IBusInputContext *context,
+                                       const gchar     *prop_name);
+void ibus_input_context_property_hide (IBusInputContext *context,
+                                       const gchar      *prop_name);
 
 G_DEFINE_TYPE (IBusInputContext, ibus_input_context, IBUS_TYPE_PROXY)
 
@@ -1185,6 +1189,7 @@ ibus_input_context_set_engine (IBusInputContext *context,
 }
 
 #define DEFINE_FUNC(name, Name)                                         \
+    void ibus_input_context_##name (IBusInputContext *context);         \
     void                                                                \
     ibus_input_context_##name (IBusInputContext *context)               \
     {                                                                   \

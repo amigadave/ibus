@@ -90,6 +90,8 @@ static IBusBus *_bus = NULL;
 
 static gboolean _use_sync_mode = FALSE;
 
+GSource * ibus_wayland_source_new (struct wl_display *display);
+
 static gboolean
 _get_boolean_env (const gchar *name,
                   gboolean     defval)

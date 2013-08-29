@@ -444,6 +444,7 @@ bus_panel_proxy_property_activate (BusPanelProxy *panel,
 }
 
 #define DEFINE_FUNCTION(Name, name)                     \
+    void bus_panel_proxy_##name (BusPanelProxy *panel); \
     void bus_panel_proxy_##name (BusPanelProxy *panel)  \
     {                                                   \
         g_assert (BUS_IS_PANEL_PROXY (panel));          \
@@ -576,6 +577,8 @@ _context_destroy_cb (BusInputContext *context,
 }
 
 #define DEFINE_FUNCTION(name)                                   \
+    static void _context_##name##_cb (BusInputContext *context, \
+                                      BusPanelProxy   *panel);  \
     static void _context_##name##_cb (BusInputContext *context, \
                                       BusPanelProxy   *panel)   \
     {                                                           \

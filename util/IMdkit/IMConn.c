@@ -37,6 +37,8 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #define Va_start(a,b) va_start(a,b)
 
+XIMS _GetIMS (char *modifiers);
+
 static void _IMCountVaList(va_list var, int *total_count)
 {
     char *attr;

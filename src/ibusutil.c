@@ -37,6 +37,8 @@
 /* gettext macro */
 #define N_(t) t
 
+void _load_lang (void);
+const gchar * ibus_get_language_name (const gchar *_locale);
 static GHashTable *__languages_dict;
 
 static gboolean

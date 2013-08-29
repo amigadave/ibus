@@ -33,6 +33,7 @@ typedef guint KEYMAP[256][7];
 static void         ibus_keymap_destroy         (IBusKeymap             *keymap);
 static gboolean     ibus_keymap_load            (const gchar            *name,
                                                  KEYMAP                  keymap);
+void ibus_keymap_fill (KEYMAP keymap);
 static GHashTable   *keymaps = NULL;
 
 G_DEFINE_TYPE (IBusKeymap, ibus_keymap, IBUS_TYPE_OBJECT)

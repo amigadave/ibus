@@ -44,6 +44,12 @@ extern void _Xi18nDeleteClient(Xi18n, CARD16);
 static Bool WaitXConnectMessage(Display*, Window,
                                 XEvent*, XPointer);
 static Bool WaitXIMProtocol(Display*, Window, XEvent*, XPointer);
+extern int _Xi18nNeedSwap (Xi18n, CARD16);
+extern void _Xi18nMessageHandler (XIMS, CARD16, unsigned char *, Bool *);
+
+Bool _Xi18nCheckXAddress (Xi18n i18n_core,
+                          TransportSW *transSW,
+                          char *address);
 
 static XClient *NewXClient (Xi18n i18n_core, Window new_client)
 {
