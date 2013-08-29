@@ -81,7 +81,7 @@ struct _IBusPropListClass {
     IBusSerializableClass parent;
 };
 
-GType            ibus_prop_list_get_type    ();
+GType            ibus_prop_list_get_type    (void);
 
 /**
  * ibus_prop_list_new:
@@ -89,7 +89,7 @@ GType            ibus_prop_list_get_type    ();
  *
  * New a IBusPropList.
  */
-IBusPropList    *ibus_prop_list_new         ();
+IBusPropList    *ibus_prop_list_new         (void);
 
 /**
  * ibus_prop_list_append:

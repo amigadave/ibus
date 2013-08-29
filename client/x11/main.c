@@ -1020,7 +1020,7 @@ _init_ibus (void)
 }
 
 static void
-_xim_init_IMdkit ()
+_xim_init_IMdkit (void)
 {
 #if 0
     XIMStyle ims_styles_overspot [] = {
@@ -1091,7 +1091,7 @@ _xim_init_IMdkit ()
 }
 
 static void
-_atexit_cb ()
+_atexit_cb (void)
 {
     if (_bus && ibus_bus_is_connected (_bus)) {
         ibus_bus_exit(_bus, False);

@@ -94,7 +94,7 @@ _iso_codes_parse_xml_node (XMLNode          *node)
 }
 
 void
-_load_lang()
+_load_lang(void)
 {
     gchar *filename;
     XMLNode *node;

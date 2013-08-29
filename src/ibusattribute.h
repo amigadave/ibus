@@ -122,7 +122,7 @@ struct _IBusAttributeClass {
  *
  * Returns GType of IBusAttribute.
  */
-GType                ibus_attribute_get_type    ();
+GType                ibus_attribute_get_type    (void);
 
 /**
  * ibus_attribute_new:

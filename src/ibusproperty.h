@@ -150,7 +150,7 @@ struct _IBusPropertyClass {
     IBusSerializableClass parent;
 };
 
-GType            ibus_property_get_type     ();
+GType            ibus_property_get_type     (void);
 
 /**
  * ibus_property_new:

@@ -83,7 +83,7 @@ struct _IBusAttrListClass {
  *
  * Returns GType of IBusAttrList.
  */
-GType                ibus_attr_list_get_type    ();
+GType                ibus_attr_list_get_type    (void);
 
 /**
  * ibus_attr_list_new:
@@ -91,7 +91,7 @@ GType                ibus_attr_list_get_type    ();
  *
  * New an IBusAttrList.
  */
-IBusAttrList        *ibus_attr_list_new         ();
+IBusAttrList        *ibus_attr_list_new         (void);
 
 /**
  * ibus_attr_list_append:
