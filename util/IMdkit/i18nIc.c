@@ -37,6 +37,19 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #define IC_SIZE 64
 
+extern XimFrameRec short_fr[];
+extern XimFrameRec long_fr[];
+extern XimFrameRec fontset_fr[];
+extern XimFrameRec xpoint_fr[];
+extern XimFrameRec xrectangle_fr[];
+extern XimFrameRec attr_head_fr[];
+extern XimFrameRec create_ic_fr[];
+extern XimFrameRec create_ic_reply_fr[];
+extern XimFrameRec set_ic_values_fr[];
+extern XimFrameRec set_ic_values_reply_fr[];
+extern XimFrameRec get_ic_values_fr[];
+extern XimFrameRec get_ic_values_reply_fr[];
+
 /* Set IC values */
 static void SetCardAttribute (XICAttribute *value_ret,
                               char *p,
@@ -55,7 +68,6 @@ static void SetCardAttribute (XICAttribute *value_ret,
     else if (value_length == sizeof (CARD16))
     {
         INT16 value;
-        extern XimFrameRec short_fr[];
 
         fm = FrameMgrInit (short_fr, (char *) p, need_swap);
         /* get data */
@@ -66,7 +78,6 @@ static void SetCardAttribute (XICAttribute *value_ret,
     else if (value_length == sizeof(CARD32))
     {
         INT32 value;
-        extern XimFrameRec long_fr[];
         
         fm = FrameMgrInit (long_fr, (char *) p, need_swap);
         /* get data */
@@ -95,7 +106,6 @@ static void SetFontAttribute (XICAttribute *value_ret,
     char *base_name;
     CARD16 base_length;
     FrameMgr fm;
-    extern XimFrameRec fontset_fr[];
 
     fm = FrameMgrInit (fontset_fr, (char *) p, need_swap);
     /* get data */
@@ -127,7 +137,6 @@ static void SetPointAttribute (XICAttribute *value_ret,
 {
     XPoint *buf;
     FrameMgr fm;
-    extern XimFrameRec xpoint_fr[];
 
     buf = (XPoint *) (*value_buf);
 
@@ -156,7 +165,6 @@ static void SetRectAttribute (XICAttribute *value_ret,
 {
     XRectangle *buf;
     FrameMgr fm;
-    extern XimFrameRec xrectangle_fr[];
 
     buf = (XRectangle *) (*value_buf);
  
@@ -212,7 +220,6 @@ static void GetAttrHeader (unsigned char *rec,
                            int need_swap)
 {
     FrameMgr fm;
-    extern XimFrameRec attr_head_fr[];
 
     fm = FrameMgrInit (attr_head_fr, (char *) rec, need_swap);
     /* put data */
@@ -236,7 +243,6 @@ static void GetCardAttribute (char *rec, XICAttribute *list, int need_swap)
     else if (list->value_length == sizeof (CARD16))
     {
         INT16 *value = (INT16 *) list->value;
-        extern XimFrameRec short_fr[];
 
         fm = FrameMgrInit (short_fr, (char *) recp, need_swap);
         /* put data */
@@ -246,7 +252,6 @@ static void GetCardAttribute (char *rec, XICAttribute *list, int need_swap)
     else if (list->value_length == sizeof (CARD32))
     {
         INT32 *value = (INT32 *) list->value;
-        extern XimFrameRec long_fr[];
 
         fm = FrameMgrInit (long_fr, (char *) recp, need_swap);
         /* put data */
@@ -259,7 +264,6 @@ static void GetCardAttribute (char *rec, XICAttribute *list, int need_swap)
 static void GetFontAttribute(char *rec, XICAttribute *list, int need_swap)
 {
     FrameMgr fm;
-    extern XimFrameRec fontset_fr[];
     char *base_name = (char *) list->value;
     unsigned char *recp = (unsigned char *) rec;
 
@@ -277,7 +281,6 @@ static void GetFontAttribute(char *rec, XICAttribute *list, int need_swap)
 static void GetRectAttribute (char *rec, XICAttribute *list, int need_swap)
 {
     FrameMgr fm;
-    extern XimFrameRec xrectangle_fr[];
     XRectangle *rect = (XRectangle *) list->value;
     unsigned char *recp = (unsigned char *) rec;
 
@@ -296,7 +299,6 @@ static void GetRectAttribute (char *rec, XICAttribute *list, int need_swap)
 static void GetPointAttribute (char *rec, XICAttribute *list, int need_swap)
 {
     FrameMgr fm;
-    extern XimFrameRec xpoint_fr[];
     XPoint *rect = (XPoint *) list->value;
     unsigned char *recp = (unsigned char *) rec;
 
@@ -342,7 +344,6 @@ static int ReadICValue (Xi18n i18n_core,
             CARD16 ic_len = 0;
             CARD16 number;
             FrameMgr fm;
-            extern XimFrameRec attr_head_fr[];
 
             while (total_length < value_length)
             {
@@ -575,13 +576,9 @@ static void SwapAttributes (XICAttribute *list,
 			   int number){
     FrameMgr fm;
     CARD16 c16;
-    extern XimFrameRec short_fr[];
     CARD32 c32;
-    extern XimFrameRec long_fr[];
     XPoint xpoint;
-    extern XimFrameRec xpoint_fr[];
     XRectangle xrect;
-    extern XimFrameRec xrectangle_fr[];
     int i;
 
     for (i = 0; i < number; ++i, ++list) {
@@ -642,10 +639,6 @@ void _Xi18nChangeIC (XIMS ims,
     CARD16 ic_num = 0;
     CARD16 connect_id = call_data->any.connect_id;
     IMChangeICStruct *changeic = (IMChangeICStruct *) &call_data->changeic;
-    extern XimFrameRec create_ic_fr[];
-    extern XimFrameRec create_ic_reply_fr[];
-    extern XimFrameRec set_ic_values_fr[];
-    extern XimFrameRec set_ic_values_reply_fr[];
     CARD16 input_method_ID;
  
     void *value_buf = NULL;
@@ -879,8 +872,6 @@ void _Xi18nGetIC (XIMS ims, IMProtocol *call_data, unsigned char *p)
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
     FmStatus status;
-    extern XimFrameRec get_ic_values_fr[];
-    extern XimFrameRec get_ic_values_reply_fr[];
     CARD16 byte_length;
     register int total_size;
     unsigned char *reply = NULL;

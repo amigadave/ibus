@@ -38,6 +38,8 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "Xi18nX.h"
 #include "XimFunc.h"
 
+extern XimFrameRec packet_header_fr[];
+
 extern Xi18nClient *_Xi18nFindClient(Xi18n, CARD16);
 extern Xi18nClient *_Xi18nNewClient(Xi18n);
 extern void _Xi18nDeleteClient(Xi18n, CARD16);
@@ -80,7 +82,6 @@ static unsigned char *ReadXIMMessage (XIMS ims,
     Xi18nClient *client = i18n_core->address.clients;
     XClient *x_client = NULL;
     FrameMgr fm;
-    extern XimFrameRec packet_header_fr[];
     unsigned char *p = NULL;
     unsigned char *p1;
 
@@ -101,7 +102,6 @@ static unsigned char *ReadXIMMessage (XIMS ims,
         CARD8 major_opcode;
         CARD8 minor_opcode;
         CARD16 length;
-        extern int _Xi18nNeedSwap (Xi18n, CARD16);
 
         if (client->byte_order == '?')
         {
@@ -496,7 +496,6 @@ static Bool WaitXIMProtocol (Display *dpy,
                              XEvent *ev,
                              XPointer client_data)
 {
-    extern void _Xi18nMessageHandler (XIMS, CARD16, unsigned char *, Bool *);
     XIMS ims = (XIMS) client_data;
     Xi18n i18n_core = ims->protocol;
     XSpecRec *spec = (XSpecRec *) i18n_core->address.connect_addr;

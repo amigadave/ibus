@@ -35,11 +35,21 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "FrameMgr.h"
 #include "XimFunc.h"
 
+extern XimFrameRec geometry_fr[];
+extern XimFrameRec preedit_start_fr[];
+extern XimFrameRec preedit_draw_fr[];
+extern XimFrameRec preedit_caret_fr[];
+extern XimFrameRec preedit_done_fr[];
+extern XimFrameRec status_start_fr[];
+extern XimFrameRec status_draw_text_fr[];
+extern XimFrameRec status_draw_bitmap_fr[];
+extern XimFrameRec status_done_fr[];
+extern XimFrameRec str_conversion_fr[];
+
 int _Xi18nGeometryCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec geometry_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMGeometryCBStruct *geometry_CB =
@@ -82,7 +92,6 @@ int _Xi18nPreeditStartCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec preedit_start_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMPreeditCBStruct *preedit_CB =
@@ -122,7 +131,6 @@ int _Xi18nPreeditDrawCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec preedit_draw_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMPreeditCBStruct *preedit_CB =
@@ -194,7 +202,6 @@ int _Xi18nPreeditCaretCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec preedit_caret_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMPreeditCBStruct *preedit_CB =
@@ -240,7 +247,6 @@ int _Xi18nPreeditDoneCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec preedit_done_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMPreeditCBStruct *preedit_CB =
@@ -282,7 +288,6 @@ int _Xi18nStatusStartCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec status_start_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMStatusCBStruct *status_CB =
@@ -323,8 +328,6 @@ int _Xi18nStatusDrawCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm = (FrameMgr)0;
-    extern XimFrameRec status_draw_text_fr[];
-    extern XimFrameRec status_draw_bitmap_fr[];
     register int total_size = 0;
     unsigned char *reply = NULL;
     IMStatusCBStruct *status_CB =
@@ -419,7 +422,6 @@ int _Xi18nStatusDoneCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec status_done_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMStatusCBStruct *status_CB =
@@ -461,7 +463,6 @@ int _Xi18nStringConversionCallback (XIMS ims, IMProtocol *call_data)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec str_conversion_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMStrConvCBStruct *call_back =

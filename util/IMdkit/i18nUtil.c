@@ -37,6 +37,10 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Xi18nClient *_Xi18nFindClient (Xi18n, CARD16);
 
+extern XimFrameRec packet_header_fr[];
+extern XimFrameRec register_triggerkeys_fr[];
+extern XimFrameRec set_event_mask_fr[];
+
 int
 _Xi18nNeedSwap (Xi18n i18n_core, CARD16 connect_id)
 {
@@ -128,7 +132,6 @@ void _Xi18nSendMessage (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec packet_header_fr[];
     unsigned char *reply_hdr = NULL;
     int header_size;
     unsigned char *reply = NULL;
@@ -173,7 +176,6 @@ void _Xi18nSendTriggerKey (XIMS ims, CARD16 connect_id)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec register_triggerkeys_fr[];
     XIMTriggerKey *on_keys = i18n_core->address.on_keys.keylist;
     XIMTriggerKey *off_keys = i18n_core->address.off_keys.keylist;
     int on_key_num = i18n_core->address.on_keys.count_keys;
@@ -244,7 +246,6 @@ void _Xi18nSetEventMask (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec set_event_mask_fr[];
     unsigned char *reply = NULL;
     register int total_size;
 

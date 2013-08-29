@@ -79,6 +79,13 @@ IMMethodsRec Xi18n_im_methods =
 extern Bool _Xi18nCheckXAddress (Xi18n, TransportSW *, char *);
 extern Bool _Xi18nCheckTransAddress (Xi18n, TransportSW *, char *);
 
+extern XimFrameRec wire_keyevent_fr[];
+extern XimFrameRec short_fr[];
+extern XimFrameRec forward_event_fr[];
+extern XimFrameRec commit_chars_fr[];
+extern XimFrameRec commit_both_fr[];
+extern XimFrameRec sync_fr[];
+
 TransportSW _TransR[] =
 {
     {"X",               1, _Xi18nCheckXAddress},
@@ -820,8 +827,6 @@ static void EventToWireEvent (XEvent *ev, xEvent *event,
 			      CARD16 *serial, Bool byte_swap)
 {
     FrameMgr fm;
-    extern XimFrameRec wire_keyevent_fr[];
-    extern XimFrameRec short_fr[];
     BYTE b;
     CARD16 c16;
     CARD32 c32;
@@ -869,7 +874,6 @@ static Status xi18n_forwardEvent (XIMS ims, XPointer xp)
     Xi18n i18n_core = ims->protocol;
     IMForwardEventStruct *call_data = (IMForwardEventStruct *)xp;
     FrameMgr fm;
-    extern XimFrameRec forward_event_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     unsigned char *replyp;
@@ -935,8 +939,6 @@ static Status xi18n_commit (XIMS ims, XPointer xp)
     Xi18n i18n_core = ims->protocol;
     IMCommitStruct *call_data = (IMCommitStruct *)xp;
     FrameMgr fm;
-    extern XimFrameRec commit_chars_fr[];
-    extern XimFrameRec commit_both_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     CARD16 str_length;
@@ -1119,7 +1121,6 @@ static int xi18n_syncXlib (XIMS ims, XPointer xp)
     Xi18n i18n_core = ims->protocol;
     IMSyncXlibStruct *sync_xlib;
 
-    extern XimFrameRec sync_fr[];
     FrameMgr fm;
     CARD16 connect_id = call_data->any.connect_id;
     int total_size;

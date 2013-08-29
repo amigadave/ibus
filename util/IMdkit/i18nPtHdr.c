@@ -53,6 +53,33 @@ static void	DebugLog(char * msg)
 
 extern Xi18nClient *_Xi18nFindClient (Xi18n, CARD16);
 
+extern XimFrameRec connect_fr[], connect_reply_fr[];
+extern XimFrameRec open_fr[];
+extern XimFrameRec open_reply_fr[];
+extern XimFrameRec close_fr[];
+extern XimFrameRec close_reply_fr[];
+extern XimFrameRec query_extension_fr[];
+extern XimFrameRec query_extension_reply_fr[];
+extern XimFrameRec sync_reply_fr[];
+extern XimFrameRec input_styles_fr[];
+extern XimFrameRec get_im_values_fr[];
+extern XimFrameRec get_im_values_reply_fr[];
+extern XimFrameRec set_ic_focus_fr[];
+extern XimFrameRec unset_ic_focus_fr[];
+extern XimFrameRec destroy_ic_fr[];
+extern XimFrameRec destroy_ic_reply_fr[];
+extern XimFrameRec reset_ic_fr[];
+extern XimFrameRec reset_ic_reply_fr[];
+extern XimFrameRec wire_keyevent_fr[];
+extern XimFrameRec forward_event_fr[];
+extern XimFrameRec ext_forward_keyevent_fr[];
+extern XimFrameRec ext_move_fr[];
+extern XimFrameRec trigger_notify_fr[], trigger_notify_reply_fr[];
+extern XimFrameRec encoding_negotiation_fr[];
+extern XimFrameRec encoding_negotiation_reply_fr[];
+extern XimFrameRec preedit_start_reply_fr[];
+extern XimFrameRec preedit_caret_reply_fr[];
+
 void PreeditStartReplyMessageProc (XIMS ims,
                                    IMProtocol *call_data,
                                    unsigned char *p);
@@ -82,7 +109,6 @@ static void ConnectMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec connect_fr[], connect_reply_fr[];
     register int total_size;
     CARD16 server_major_version, server_minor_version;
     unsigned char *reply = NULL;
@@ -174,8 +200,6 @@ static void OpenMessageProc(XIMS ims, IMProtocol *call_data, unsigned char *p)
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec open_fr[];
-    extern XimFrameRec open_reply_fr[];
     unsigned char *reply = NULL;
     int str_size;
     register int i, total_size;
@@ -289,8 +313,6 @@ static void CloseMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec close_fr[];
-    extern XimFrameRec close_reply_fr[];
     unsigned char *reply = NULL;
     register int total_size;
     CARD16 connect_id = call_data->any.connect_id;
@@ -439,8 +461,6 @@ static void QueryExtensionMessageProc (XIMS ims,
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
     FmStatus status;
-    extern XimFrameRec query_extension_fr[];
-    extern XimFrameRec query_extension_reply_fr[];
     unsigned char *reply = NULL;
     int str_size;
     register int i;
@@ -565,7 +585,6 @@ static void SyncReplyMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec sync_reply_fr[];
     CARD16 connect_id = call_data->any.connect_id;
     Xi18nClient *client;
     CARD16 input_method_ID;
@@ -611,7 +630,6 @@ static void GetIMValueFromName (Xi18n i18n_core,
         if (buf != NULL)
         {
             FrameMgr fm;
-            extern XimFrameRec input_styles_fr[];
             unsigned char *data = NULL;
             int total_size;
             
@@ -732,8 +750,6 @@ static void GetIMValuesMessageProc (XIMS ims,
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
     FmStatus status;
-    extern XimFrameRec get_im_values_fr[];
-    extern XimFrameRec get_im_values_reply_fr[];
     CARD16 byte_length;
     int list_len, total_size;
     unsigned char *reply = NULL;
@@ -875,7 +891,6 @@ static void SetICFocusMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec set_ic_focus_fr[];
     IMChangeFocusStruct *setfocus;
     CARD16 connect_id = call_data->any.connect_id;
     CARD16 input_method_ID;
@@ -907,7 +922,6 @@ static void UnsetICFocusMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec unset_ic_focus_fr[];
     IMChangeFocusStruct *unsetfocus;
     CARD16 connect_id = call_data->any.connect_id;
     CARD16 input_method_ID;
@@ -939,8 +953,6 @@ static void DestroyICMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec destroy_ic_fr[];
-    extern XimFrameRec destroy_ic_reply_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMDestroyICStruct *destroy =
@@ -1000,8 +1012,6 @@ static void ResetICMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec reset_ic_fr[];
-    extern XimFrameRec reset_ic_reply_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMResetICStruct *resetic =
@@ -1068,7 +1078,6 @@ static int WireEventToEvent (Xi18n i18n_core,
                              Bool byte_swap)
 {
     FrameMgr fm;
-    extern XimFrameRec wire_keyevent_fr[];
     BYTE b;
     CARD16 c16;
     CARD32 c32;
@@ -1130,7 +1139,6 @@ static void ForwardEventMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec forward_event_fr[];
     xEvent wire_event;
     IMForwardEventStruct *forward =
         (IMForwardEventStruct*) &call_data->forwardevent;
@@ -1173,7 +1181,6 @@ static void ExtForwardKeyEventMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec ext_forward_keyevent_fr[];
     CARD8 type, keycode;
     CARD16 state;
     CARD32 ev_time, window;
@@ -1236,7 +1243,6 @@ static void ExtMoveMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec ext_move_fr[];
     IMMoveStruct *extmove =
         (IMMoveStruct*) & call_data->extmove;
     CARD16 connect_id = call_data->any.connect_id;
@@ -1285,7 +1291,6 @@ static void TriggerNotifyMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec trigger_notify_fr[], trigger_notify_reply_fr[];
     register int total_size;
     unsigned char *reply = NULL;
     IMTriggerNotifyStruct *trigger =
@@ -1412,8 +1417,6 @@ static void EncodingNegotiatonMessageProc (XIMS ims,
     FrameMgr fm;
     FmStatus status;
     CARD16 byte_length;
-    extern XimFrameRec encoding_negotiation_fr[];
-    extern XimFrameRec encoding_negotiation_reply_fr[];
     register int i, total_size;
     unsigned char *reply = NULL;
     IMEncodingNegotiationStruct *enc_nego =
@@ -1546,7 +1549,6 @@ void PreeditStartReplyMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec preedit_start_reply_fr[];
     IMPreeditCBStruct *preedit_CB =
         (IMPreeditCBStruct *) &call_data->preedit_callback;
     CARD16 connect_id = call_data->any.connect_id;
@@ -1577,7 +1579,6 @@ void PreeditCaretReplyMessageProc (XIMS ims,
 {
     Xi18n i18n_core = ims->protocol;
     FrameMgr fm;
-    extern XimFrameRec preedit_caret_reply_fr[];
     IMPreeditCBStruct *preedit_CB =
         (IMPreeditCBStruct *) &call_data->preedit_callback;
     XIMPreeditCaretCallbackStruct *caret =

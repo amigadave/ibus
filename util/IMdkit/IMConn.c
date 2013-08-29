@@ -37,6 +37,8 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #define Va_start(a,b) va_start(a,b)
 
+extern IMMethodsRec Xi18n_im_methods;
+
 XIMS _GetIMS (char *modifiers);
 
 static void _IMCountVaList(va_list var, int *total_count)
@@ -105,7 +107,6 @@ static char *_FindModifiers (XIMArg *args)
 XIMS _GetIMS (char *modifiers)
 {
     XIMS ims;
-    extern IMMethodsRec Xi18n_im_methods;
 
     if ((ims = (XIMS) malloc (sizeof (XIMProtocolRec))) == (XIMS) NULL)
 	return ((XIMS) NULL);
