@@ -59,6 +59,7 @@ static void SetCardAttribute (XICAttribute *value_ret,
                               void **value_buf)
 {
     FrameMgr fm;
+    char *value_buf_tmp;
 
     /*endif*/
     if (value_length == sizeof (CARD8))
@@ -93,7 +94,9 @@ static void SetCardAttribute (XICAttribute *value_ret,
     value_ret->value_length = value_length;
     value_ret->value = *value_buf;
  
-    *value_buf += value_length;
+    value_buf_tmp = *value_buf;
+    value_buf_tmp += value_length;
+    *value_buf = value_buf_tmp;
 }
 
 static void SetFontAttribute (XICAttribute *value_ret,
@@ -106,6 +109,7 @@ static void SetFontAttribute (XICAttribute *value_ret,
     char *base_name;
     CARD16 base_length;
     FrameMgr fm;
+    char *value_buf_tmp;
 
     fm = FrameMgrInit (fontset_fr, (char *) p, need_swap);
     /* get data */
@@ -125,7 +129,9 @@ static void SetFontAttribute (XICAttribute *value_ret,
     value_ret->value_length = value_length;
     value_ret->value = *value_buf;
 
-    *value_buf += (base_length + 1);
+    value_buf_tmp = *value_buf;
+    value_buf_tmp += (base_length + 1);
+    *value_buf = value_buf_tmp;
 }
 
 static void SetPointAttribute (XICAttribute *value_ret,
@@ -137,6 +143,7 @@ static void SetPointAttribute (XICAttribute *value_ret,
 {
     XPoint *buf;
     FrameMgr fm;
+    char *value_buf_tmp;
 
     buf = (XPoint *) (*value_buf);
 
@@ -153,7 +160,9 @@ static void SetPointAttribute (XICAttribute *value_ret,
     value_ret->value_length = value_length;
     value_ret->value = (char *) buf;
 
-    *value_buf += value_length;
+    value_buf_tmp = *value_buf;
+    value_buf_tmp += value_length;
+    *value_buf = value_buf_tmp;
 }
 
 static void SetRectAttribute (XICAttribute *value_ret,
@@ -165,6 +174,7 @@ static void SetRectAttribute (XICAttribute *value_ret,
 {
     XRectangle *buf;
     FrameMgr fm;
+    char *value_buf_tmp;
 
     buf = (XRectangle *) (*value_buf);
  
@@ -183,7 +193,9 @@ static void SetRectAttribute (XICAttribute *value_ret,
     value_ret->value_length = value_length;
     value_ret->value = (char *) buf;
 
-    *value_buf += value_length;
+    value_buf_tmp = *value_buf;
+    value_buf_tmp += value_length;
+    *value_buf = value_buf_tmp;
 }
 
 #if 0
