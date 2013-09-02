@@ -25,6 +25,7 @@ libibus = $(top_builddir)/src/libibus-@IBUS_API_VERSION@.la
 AM_CPPFLAGS = \
 	-I$(top_srcdir)/src \
 	-I$(top_builddir)/src \
+	-include vala-g_type_init.h \
 	$(NULL)
 
 AM_CFLAGS = \
